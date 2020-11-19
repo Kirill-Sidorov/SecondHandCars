@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Second Hand Cars</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+
+    <div class="block"> <h1>Выберите модель</h1> </div>
+    <form method="POST" th:object="${car}">
+        <div class="div_table">
+            <ul>
+                <div class="form_radio_btn" th:each="carModel : ${carModels}">
+                    <input type="radio" th:field="*{model}" th:value="${carModel}"/>
+                    <label th:for="${#ids.prev('model')}" th:text="${carModel}"></label>
+                </div>
+            </ul>
+        </div>
+        <div class="block"> <button>ДАЛЕЕ</button> </div>
+    </form>
+
+</body>
+</html>

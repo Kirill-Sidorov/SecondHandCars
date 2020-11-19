@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Second Hand Cars</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+
+<form method="POST" th:action="@{/car_info}" th:object="${carInfo}">
+    <div class="div_table_info">
+
+        <h2>Характеристики автомобиля</h2>
+
+        <div th:if="${#fields.hasErrors()}">
+            <span class="validationError">
+                Проверье корректность введенный данных
+            </span>
+        </div>
+
+        <label>Год выпуска:</label>
+        <input type="number" min="1940" max="2021" step="20" th:field="*{yearManufacture}" /><br/>
+
+        <label>Тип кузова:</label>
+        <ul>
+            <div class="form_radio_group">
+                <div class="form_radio_group-item" th:each="body : ${typeBodyArray}">
+                    <input type="radio" th:field="*{typeBody}" th:value="${body}"/>
+                    <label th:for="${#ids.prev('typeBody')}" th:text="${body}"></label>
+                </div>
+            </div>
+        </ul>
+
+        <label>Тип топлива:</label>
+        <ul>
+            <div class="form_radio_group">
+                <div class="form_radio_group-item" th:each="fuel : ${typeFuelArray}">
+                    <input type="radio" th:field="*{typeFuel}" th:value="${fuel}"/>
+                    <label th:for="${#ids.prev('typeFuel')}" th:text="${fuel}"></label>
+                </div>
+            </div>
+        </ul>
+
+        <label>Тип коробки переключения передач:</label>
+        <ul>
+            <div class="form_radio_group">
+                <div class="form_radio_group-item" th:each="transmission : ${typeTransmissionArray}">
+                    <input type="radio" th:field="*{typeTransmission}" th:value="${transmission}"/>
+                    <label th:for="${#ids.prev('typeTransmission')}" th:text="${transmission}"></label>
+                </div>
+            </div>
+        </ul>
+
+        <label>Тип привода:</label>
+        <ul>
+            <div class="form_radio_group">
+                <div class="form_radio_group-item" th:each="drive : ${typeDriveArray}">
+                    <input type="radio" th:field="*{typeDrive}" th:value="${drive}"/>
+                    <label th:for="${#ids.prev('typeDrive')}" th:text="${drive}"></label>
+                </div>
+            </div>
+        </ul>
+
+        <label>Мощность двигателя в л. с. :</label>
+        <input type="number" value="100" min="0" max="1000" step="25" th:field="*{horsePower}" /><br/>
+
+        <label>Объем двигателя в л. :</label>
+        <input type="number" value="1.6" min="0.5" max="7" step="0.2"  th:field="*{engineVolume}" /> <br/>
+
+        <h2>Состояние автомобиля</h2>
+
+        <label>Пробег автомобиля:</label>
+        <input type="number" value="50000" min="0"  step="1000" th:field="*{odometer}" /><br/>
+
+        <label>Паспорт транспортного средства:</label>
+        <ul>
+            <div class="form_radio_group">
+                <div class="form_radio_group-item" th:each="passport : ${passportVehicles}">
+                    <input type="radio" th:field="*{passportVehicle}" th:value="${passport}"/>
+                    <label th:for="${#ids.prev('passportVehicle')}" th:text="${passport}"></label>
+                </div>
+            </div>
+        </ul>
+
+        <label>Какой вы владелец?</label>
+        <ul>
+            <div class="form_radio_group">
+                <div class="form_radio_group-item" th:each="owner : ${owners}">
+                    <input type="radio" th:field="*{owner}" th:value="${owner}"/>
+                    <label th:for="${#ids.prev('owner')}" th:text="${owner}"></label>
+                </div>
+            </div>
+        </ul>
+
+        <label for="@{licensePlate}">Государственный номер: </label>
+        <input type="text" th:field="*{licensePlate}"/>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('licensePlate')}"
+              th:errors="*{licensePlate}">Name Error</span>
+        <br/>
+
+        <label for="@{vin}">VIN/Номер кузова </label>
+        <input type="text" th:field="*{vin}"/>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('vin')}"
+              th:errors="*{vin}">Name Error</span>
+        <br/>
+
+        <label>Цена:</label>
+        <input type="number" min="0" step="50000" th:field="*{price}"/><br/>
+
+    </div>
+    <div class="block"> <button>ДАЛЕЕ</button> </div>
+</form>
+
+</body>
+</html>
