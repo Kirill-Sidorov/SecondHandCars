@@ -34,7 +34,7 @@ public class JdbcSellerRepository implements SellerRepository {
     }
 
     @Override
-    public Seller findById(String id) {
+    public Seller findById(long id) {
         return jdbc.queryForObject("select * from Seller where id=?",
                 this::mapRowToSeller, id);
     }

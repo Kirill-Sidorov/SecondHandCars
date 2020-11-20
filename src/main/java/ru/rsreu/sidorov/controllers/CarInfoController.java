@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ru.rsreu.sidorov.carspecifications.*;
 import ru.rsreu.sidorov.data.CarInfoRepository;
 import ru.rsreu.sidorov.models.CarInfo;
@@ -41,16 +42,17 @@ public class CarInfoController {
     }
 
     @PostMapping
-    public String processCarInfo (@Valid @ModelAttribute("carInfo") CarInfo carInfo, Errors errors, Model model) {
+    public String processCarInfo (@Valid @ModelAttribute("carInfo") CarInfo carInfo, Errors errors, Model model, final RedirectAttributes redirectAttributes) {
         if (errors.hasErrors()) {
             model = fillModel(model);
             return "car_info";
         }
         carInfo.setCarId(carId);
         carInfo.setSellerId(sellerId);
+        redirectAttributes.addFlashAttribute("carInfo", carInfo);
         carInfoRepository.save(carInfo);
         log.info("Processing: " + carInfo);
-        return "redirect:/";
+        return "redirect:/ad";
     }
 
     private Model fillModel(Model model) {

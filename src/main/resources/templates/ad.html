@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Second Hand Cars</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+<div class="block">
+    <h1>Объявление</h1>
+    <div th:object="${seller}">
+        <h2>Продавец:</h2>
+        <p>Город продажи: <span th:text="*{city}"></span></p>
+        <p>Имя продавца: <span th:text="*{nameOwner}"></span></p>
+        <p>Номер телефона: <span th:text="*{phoneNumber}"></span></p>
+        <p>Электронная почта: <span th:text="*{email}"></span></p>
+    </div>
+    <div th:object="${car}">
+        <h2>Автомобиль:</h2>
+        <p>Марка: <span th:text="*{brand}"></span></p>
+        <p>Модель: <span th:text="*{model}"></span></p>
+    </div>
+    <div th:object="${carInfo}">
+        <h2>Информация:</h2>
+        <p>Год выпуска: <span th:text="*{yearManufacture}"></span></p>
+        <p>Тип кузова: <span th:text="*{typeBody}"></span></p>
+        <p>Тип топлива: <span th:text="*{typeFuel}"></span></p>
+        <p>Тип кпп: <span th:text="*{typeTransmission}"></span></p>
+        <p>Тип привода: <span th:text="*{typeDrive}"></span></p>
+        <p>Мощность: <span th:text="*{horsePower}"></span></p>
+        <p>Объем двигателя: <span th:text="*{engineVolume}"></span></p>
+        <p>Пробег: <span th:text="*{odometer}"></span></p>
+        <p>ПТС: <span th:text="*{passportVehicle}"></span></p>
+        <p>Владелец: <span th:text="*{owner}"></span></p>
+        <p>Номер: <span th:text="*{licensePlate}"></span></p>
+        <p>VIN: <span th:text="*{vin}"></span></p>
+        <p>Цена: <span th:text="*{price}"></span></p>
+    </div>
+    <a href="/"> <h2>На главную страницу</h2> </a>
+</div>
+</body>
+</html>
