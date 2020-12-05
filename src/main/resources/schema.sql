@@ -26,7 +26,7 @@ create table if not exists Car_Info (
 create table if not exists Seller (
                                       id identity,
                                       city varchar(15) not null,
-                                      nameOwner varchar(15) not null,
+                                      username varchar(15) not null,
                                       phoneNumber varchar(11) not null,
                                       email varchar(20) not null
 );

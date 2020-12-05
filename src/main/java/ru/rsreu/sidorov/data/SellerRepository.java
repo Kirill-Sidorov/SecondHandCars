@@ -6,5 +6,7 @@ public interface SellerRepository {
 
     Seller findById(long id);
 
+    Seller findByUsername(String username);
+
     Seller save(Seller seller);
 }

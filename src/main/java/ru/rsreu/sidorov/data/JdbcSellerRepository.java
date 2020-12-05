@@ -40,6 +40,12 @@ public class JdbcSellerRepository implements SellerRepository {
     }
 
     @Override
+    public Seller findByUsername(String username) {
+        return jdbc.queryForObject("select * from Seller where username=?",
+                this::mapRowToSeller, username);
+    }
+
+    @Override
     public Seller save(Seller seller) {
         long sellerId = saveSellerInfo(seller);
         seller.setId(sellerId);
@@ -49,7 +55,7 @@ public class JdbcSellerRepository implements SellerRepository {
     private long saveSellerInfo(Seller seller) {
         Map<String, Object> values = objectMapper.convertValue(seller, Map.class);
         values.put("city", seller.getCity());
-        values.put("nameOwner", seller.getNameOwner());
+        values.put("username", seller.getUsername());
         values.put("phoneNumber", seller.getPhoneNumber());
         values.put("email", seller.getEmail());
 
@@ -79,9 +85,10 @@ public class JdbcSellerRepository implements SellerRepository {
         Seller seller = new Seller();
         seller.setId(rs.getLong("id"));
         seller.setCity(rs.getString("city"));
-        seller.setNameOwner(rs.getString("nameOwner"));
+        seller.setUsername(rs.getString("username"));
         seller.setPhoneNumber(rs.getString("phoneNumber"));
         seller.setEmail(rs.getString("email"));
         return seller;
     }
+
 }

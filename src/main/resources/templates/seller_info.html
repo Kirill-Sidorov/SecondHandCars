@@ -8,58 +8,58 @@
 
 <body>
 
-    <form method="POST" th:action="@{/seller_info}" th:object="${seller}">
+<form method="POST" th:action="@{/seller_info}" th:object="${seller}">
 
-        <div class="div_table_info">
+    <div class="div_table_info">
 
-            <h2>Личные данные</h2>
+        <h2>Личные данные</h2>
 
-            <div th:if="${#fields.hasErrors()}">
+        <div th:if="${#fields.hasErrors()}">
                 <span class="validationError">
                     Пожалуйста, проверьте корректность введенный данных
                 </span>
-            </div>
-
-            <div>
-                <label for="@{city}">Город продажи:</label>
-                <input type="text" th:field="*{city}"/>
-                <span class="validationError"
-                      th:if="${#fields.hasErrors('city')}"
-                      th:errors="*{city}">Name Error</span>
-                <br/>
-            </div>
-
-            <div>
-                <label for="@{nameOwner}">Имя продавца:</label>
-                <input type="text" th:field="*{nameOwner}"/>
-                <span class="validationError"
-                      th:if="${#fields.hasErrors('nameOwner')}"
-                      th:errors="*{nameOwner}">Name Error</span>
-                <br/>
-            </div>
-
-            <div>
-                <label for="@{phoneNumber}">Номер телефона:</label>
-                <input type="text" th:field="*{phoneNumber}"/>
-                <span class="validationError"
-                      th:if="${#fields.hasErrors('phoneNumber')}"
-                      th:errors="*{phoneNumber}">Name Error</span>
-                <br/>
-            </div>
-
-            <div>
-                <label for="@{email}">Электронная почта:</label>
-                <input type="text" th:field="*{email}"/> <br/>
-                <span class="validationError"
-                      th:if="${#fields.hasErrors('email')}"
-                      th:errors="*{email}">Name Error</span>
-                <br/>
-            </div>
-
-            <div class="block"> <button>Далее</button> </div>
-
         </div>
-    </form>
+
+        <div>
+            <label for="@{city}">Город продажи:</label>
+            <input type="text" th:field="*{city}"/>
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('city')}"
+                  th:errors="*{city}">Name Error</span>
+            <br/>
+        </div>
+
+        <div>
+            <label for="@{username}">Имя продавца:</label>
+            <input type="text" th:field="*{username}"/>
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('username')}"
+                  th:errors="*{username}">Name Error</span>
+            <br/>
+        </div>
+
+        <div>
+            <label for="@{phoneNumber}">Номер телефона:</label>
+            <input type="text" th:field="*{phoneNumber}"/>
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('phoneNumber')}"
+                  th:errors="*{phoneNumber}">Name Error</span>
+            <br/>
+        </div>
+
+        <div>
+            <label for="@{email}">Электронная почта:</label>
+            <input type="text" th:field="*{email}"/> <br/>
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('email')}"
+                  th:errors="*{email}">Name Error</span>
+            <br/>
+        </div>
+
+        <div class="block"> <button>Далее</button> </div>
+
+    </div>
+</form>
 
 </body>
 </html>
