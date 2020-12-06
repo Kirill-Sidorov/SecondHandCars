@@ -6,10 +6,17 @@
     <link rel="stylesheet" th:href="@{/styles.css}" />
 </head>
 <body>
-    <div class="block">
-        <h1>Продажа автомобилей с пробегом</h1>
-        <img th:src="@{/images/car.jpg}"/>
-        <a href="/car/car_brands"> <h2>Создать объявление о продаже</h2> </a>
+    <div class="div_table_info">
+        <div class="block">
+            <h1>Продажа автомобилей с пробегом</h1>
+            <img th:src="@{/images/car.jpg}"/>
+            <a href="/car/car_brands"> <h2>Создать объявление о продаже</h2> </a>
+        </div>
+        <form method="POST" th:action="@{/logout}">
+            <div class="block">
+                <input type="submit" value="Выйти из аккаунта"/>
+            </div>
+        </form>
     </div>
 </body>
 </html>

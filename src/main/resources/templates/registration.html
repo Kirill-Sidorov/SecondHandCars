@@ -3,29 +3,37 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Second Hand Cars</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
 </head>
 
 <body>
-<h1>Register</h1>
-
 <form method="POST" th:action="@{/register}" id="registerForm">
 
-    <label for="username">Username: </label>
-    <input type="text" name="username"/><br/>
+    <div class="div_table_info">
+        <h1>Регистрация</h1>
+        <label for="username">Логин: </label>
+        <input type="text" name="username"/><br/>
 
-    <label for="password">Password: </label>
-    <input type="password" name="password"/><br/>
+        <label for="password">Пароль: </label>
+        <input type="password" name="password"/><br/>
 
-    <label for="phoneNumber">PhoneNumber: </label>
-    <input type="text" name="phoneNumber"/><br/>
+        <label for="name">Имя пользователя: </label>
+        <input type="text" name="name"/><br/>
 
-    <label for="email">Email: </label>
-    <input type="text" name="email"/><br/>
+        <label for="phoneNumber">Номер телефона: </label>
+        <input type="text" name="phoneNumber"/><br/>
 
-    <label for="city">City: </label>
-    <input type="text" name="city"/><br/>
+        <label for="email">Email: </label>
+        <input type="text" name="email"/><br/>
 
-    <input type="submit" value="Register"/>
+        <label for="city">Город: </label>
+        <input type="text" name="city"/><br/>
+
+        <div class="block">
+            <input type="submit" value="Зарегистрироваться"/>
+        </div>
+
+    </div>
 </form>
 
 </body>

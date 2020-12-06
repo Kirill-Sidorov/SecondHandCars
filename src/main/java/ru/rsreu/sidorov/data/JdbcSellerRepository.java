@@ -56,8 +56,10 @@ public class JdbcSellerRepository implements SellerRepository {
         Map<String, Object> values = objectMapper.convertValue(seller, Map.class);
         values.put("city", seller.getCity());
         values.put("username", seller.getUsername());
+        values.put("name", seller.getName());
         values.put("phoneNumber", seller.getPhoneNumber());
         values.put("email", seller.getEmail());
+        values.put("password", seller.getPassword());
 
         long sellerId = sellerInserter.executeAndReturnKey(values).longValue();
         return sellerId;
@@ -86,8 +88,10 @@ public class JdbcSellerRepository implements SellerRepository {
         seller.setId(rs.getLong("id"));
         seller.setCity(rs.getString("city"));
         seller.setUsername(rs.getString("username"));
+        seller.setName(rs.getString("name"));
         seller.setPhoneNumber(rs.getString("phoneNumber"));
         seller.setEmail(rs.getString("email"));
+        seller.setPassword(rs.getString("password"));
         return seller;
     }
 

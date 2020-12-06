@@ -46,6 +46,7 @@ public class Seller implements UserDetails {
 
     private String city;
     private String username;
+    private String name;
     private String phoneNumber;
     private String email;
     private String password;

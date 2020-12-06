@@ -27,8 +27,10 @@ create table if not exists Seller (
                                       id identity,
                                       city varchar(15) not null,
                                       username varchar(15) not null,
+                                      name varchar(15) not null,
                                       phoneNumber varchar(11) not null,
-                                      email varchar(20) not null
+                                      email varchar(20) not null,
+                                      password varchar not null
 );
 
 alter table Car_Info

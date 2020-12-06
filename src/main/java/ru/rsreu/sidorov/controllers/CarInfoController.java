@@ -2,6 +2,8 @@ package ru.rsreu.sidorov.controllers;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -10,6 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ru.rsreu.sidorov.carspecifications.*;
 import ru.rsreu.sidorov.data.CarInfoRepository;
 import ru.rsreu.sidorov.models.CarInfo;
+import ru.rsreu.sidorov.models.Seller;
 
 import javax.validation.Valid;
 
@@ -19,7 +22,6 @@ import javax.validation.Valid;
 public class CarInfoController {
 
     private CarInfoRepository carInfoRepository;
-    private long sellerId;
     private long carId;
 
     @Autowired
@@ -33,10 +35,9 @@ public class CarInfoController {
     }
 
     @GetMapping
-    public String showCarInfo(@ModelAttribute("sellerId") long sellerId, @ModelAttribute("carId") long carId, Model model) {
-        this.sellerId = sellerId;
-        this.carId = carId;
+    public String showCarInfo(@ModelAttribute("carId") long carId, Model model) {
         model = fillModel(model);
+        this.carId = carId;
         model.addAttribute("carInfo", createCarInfo());
         return "car_info";
     }
@@ -47,8 +48,10 @@ public class CarInfoController {
             model = fillModel(model);
             return "car_info";
         }
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Seller seller = (Seller) authentication.getPrincipal();
+        carInfo.setSellerId(seller.getId());
         carInfo.setCarId(carId);
-        carInfo.setSellerId(sellerId);
         redirectAttributes.addFlashAttribute("carInfo", carInfo);
         carInfoRepository.save(carInfo);
         log.info("Processing: " + carInfo);

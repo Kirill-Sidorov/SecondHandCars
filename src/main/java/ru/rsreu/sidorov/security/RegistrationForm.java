@@ -9,6 +9,7 @@ public class RegistrationForm {
 
     private String city;
     private String username;
+    private String name;
     private String phoneNumber;
     private String email;
     private String password;
@@ -17,6 +18,7 @@ public class RegistrationForm {
         Seller seller = new Seller();
         seller.setCity(city);
         seller.setUsername(username);
+        seller.setName(name);
         seller.setPhoneNumber(phoneNumber);
         seller.setEmail(email);
         seller.setPassword(passwordEncoder.encode(password));
