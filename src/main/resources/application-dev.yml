@@ -1,0 +1,11 @@
+spring:
+  profiles: dev
+
+logging:
+  path: /var/logs/
+  file: SecondHandCarApplication.log
+  level:
+    root: WARN
+    org:
+      springframework:
+        security: DEBUG
