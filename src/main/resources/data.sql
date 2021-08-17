@@ -1,7 +1,3 @@
-delete from Car;
-delete from Car_Info;
-delete from Seller;
-
 insert into Car (brand, model)
     values ('Audi', 'A4');
 insert into Car (brand, model)
@@ -60,3 +56,6 @@ insert into Car (brand, model)
     values ('VOLVO', 'S60');
 insert into Car (brand, model)
     values ('VOLVO', 'S80');
+
+insert into Seller (city, username, name, phonenumber, email, password)
+    values ('Ryazan', 'Kir', 'Kirill', '89106234567', 'kir_sidorov@mail.ru', '111');

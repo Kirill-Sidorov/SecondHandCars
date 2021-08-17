@@ -29,16 +29,11 @@ public class CarInfoController {
         this.carInfoRepository = carInfoRepository;
     }
 
-    @ModelAttribute("carInfo")
-    public CarInfo createCarInfo() {
-        return new CarInfo();
-    }
-
     @GetMapping
     public String showCarInfo(@ModelAttribute("carId") long carId, Model model) {
         model = fillModel(model);
         this.carId = carId;
-        model.addAttribute("carInfo", createCarInfo());
+        model.addAttribute("carInfo", new CarInfo());
         return "car_info";
     }
 

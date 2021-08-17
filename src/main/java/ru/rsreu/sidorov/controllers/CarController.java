@@ -28,18 +28,13 @@ public class CarController {
         this.carRepository = carRepository;
     }
 
-    @ModelAttribute("car")
-    public Car createCar() {
-        return new Car();
-    }
-
     @GetMapping("/car_brands")
     public ModelAndView showCarBrands() {
         ModelAndView modelAndView = new ModelAndView();
         List<String> carsBrands = new ArrayList<>();
-        carRepository.findAllBrands().forEach(i -> carsBrands.add(i));
+        carRepository.findAllBrands().forEach(carsBrands::add);
         modelAndView.addObject("carBrands", carsBrands);
-        modelAndView.addObject("car", createCar());
+        modelAndView.addObject("car", new Car());
         modelAndView.setViewName("car_brands");
         return modelAndView;
     }
@@ -53,7 +48,7 @@ public class CarController {
     public ModelAndView showCarModels(@ModelAttribute("car") Car car) {
         ModelAndView modelAndView = new ModelAndView();
         List<String> carModels = new ArrayList<>();
-        carRepository.findAllModels(car.getBrand()).forEach(i -> carModels.add(i));
+        carRepository.findAllModels(car.getBrand()).forEach(carModels::add);
         modelAndView.addObject("carModels", carModels);
         modelAndView.addObject("car", car);
         modelAndView.setViewName("car_models");
